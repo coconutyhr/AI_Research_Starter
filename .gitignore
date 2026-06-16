@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local environment files
+.env
+.env.*
+
+# Generated outputs
+outputs/*
+!outputs/.gitkeep
+
+# Large or local data
+data/*
+!data/.gitkeep
+
+# Editor and OS files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
