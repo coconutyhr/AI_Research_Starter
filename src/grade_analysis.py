@@ -1,10 +1,13 @@
-students = {
-    "Alice": 85,
-    "Bob": 92,
-    "Cindy": 78,
-    "David": 88,
-    "Eva": 95
-}
+import csv
+
+students = {}
+
+with open("data/students.csv", "r", encoding="utf-8") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        name = row["name"]
+        score = int(row["score"])
+        students[name] = score
 
 scores = students.values()
 
@@ -30,3 +33,17 @@ print("Bottom student:", bottom_student)
 print("Ranking:")
 for rank, (name, score) in enumerate(sorted_students, start=1):
     print(rank, name, score)
+
+
+with open("outputs/grade_report.txt", "w", encoding="utf-8") as file:
+    file.write("Grade Analysis Report\n")
+    file.write("=====================\n")
+    file.write(f"Average score: {average_score}\n")
+    file.write(f"Highest score: {highest_score}\n")
+    file.write(f"Top student: {top_student}\n")
+    file.write(f"Lowest score: {lowest_score}\n")
+    file.write(f"Bottom student: {bottom_student}\n")
+    file.write("\nRanking:\n")
+
+    for rank, (name, score) in enumerate(sorted_students, start=1):
+        file.write(f"{rank}. {name}: {score}\n")
