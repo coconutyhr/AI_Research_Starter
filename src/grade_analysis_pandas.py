@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -24,6 +25,14 @@ def main():
     print(ranking[["rank", "name", "score"]])
 
     ranking[["rank", "name", "score"]].to_csv("outputs/ranking.csv", index=False)
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(ranking["name"], ranking["score"])
+    plt.xlabel("Student")
+    plt.ylabel("Score")
+    plt.title("Student Score Ranking")
+    plt.tight_layout()
+    plt.savefig("outputs/score_bar_chart.png")
 
 
 if __name__ == "__main__":
